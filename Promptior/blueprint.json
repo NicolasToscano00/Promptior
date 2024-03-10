@@ -1,0 +1,725 @@
+{
+    "name": "Integration Google Forms, Google Sheets",
+    "flow": [
+        {
+            "id": 4,
+            "module": "google-forms:watchRows",
+            "version": 2,
+            "parameters": {
+                "__IMTCONN__": 2260148,
+                "spreadsheetId": "1Q_iffD81q5au4j7Xo2XQz9I0v-LgvzUdtlSM1V_82LI",
+                "includesHeaders": true,
+                "tableFirstRow": "A1:Z1",
+                "valueRenderOption": "FORMATTED_VALUE",
+                "dateTimeRenderOption": "FORMATTED_STRING",
+                "limit": 6,
+                "sheetId": "Respuestas de formulario 1"
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "My Google connection (toscanico3@gmail.com)",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google"
+                            }
+                        },
+                        "spreadsheetId": {
+                            "mode": "chose",
+                            "label": "respuestas make"
+                        },
+                        "valueRenderOption": {
+                            "mode": "chose",
+                            "label": "Formatted value"
+                        },
+                        "dateTimeRenderOption": {
+                            "mode": "chose",
+                            "label": "Formatted string"
+                        },
+                        "sheetId": {
+                            "mode": "chose",
+                            "label": "Respuestas de formulario 1"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "name": "spreadsheetId",
+                        "type": "select",
+                        "label": "Spreadsheet",
+                        "required": true
+                    },
+                    {
+                        "name": "includesHeaders",
+                        "type": "hidden",
+                        "required": true
+                    },
+                    {
+                        "name": "tableFirstRow",
+                        "type": "text",
+                        "label": "Row with headers",
+                        "required": true
+                    },
+                    {
+                        "name": "valueRenderOption",
+                        "type": "select",
+                        "label": "Value render option",
+                        "validate": {
+                            "enum": [
+                                "FORMATTED_VALUE",
+                                "UNFORMATTED_VALUE",
+                                "FORMULA"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "dateTimeRenderOption",
+                        "type": "select",
+                        "label": "Date and time render option",
+                        "validate": {
+                            "enum": [
+                                "SERIAL_NUMBER",
+                                "FORMATTED_STRING"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "type": "uinteger",
+                        "label": "Limit",
+                        "required": true
+                    },
+                    {
+                        "name": "sheetId",
+                        "type": "select",
+                        "label": "Sheet",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "__ROW_NUMBER__",
+                        "label": "Row number",
+                        "type": "number"
+                    },
+                    {
+                        "name": "__SPREADSHEET_ID__",
+                        "label": "Spreadsheet ID",
+                        "type": "text"
+                    },
+                    {
+                        "name": "__SHEET__",
+                        "label": "Sheet",
+                        "type": "text"
+                    },
+                    {
+                        "name": "0",
+                        "label": "Marca temporal (A)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "1",
+                        "label": "Nombre (opcional) (B)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "2",
+                        "label": "Email (opcional) (C)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "3",
+                        "label": "¿En qué medida el taller cumplió tus expectativas?\n\nEvalúa en qué medida el taller cumplió tus expectativas iniciales para mejorar en futuras ediciones. (D)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "4",
+                        "label": "¿Qué fue lo que más te gustó del taller? (Opcional) (E)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "5",
+                        "label": "¿Hubo algo en particular que no te gustó o te pareció aburrido?  (Opcional) (F)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "6",
+                        "label": "¿Consideras que el contenido del taller fue comprensible para tu nivel de conocimiento? (G)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "7",
+                        "label": "¿Cómo calificarías la claridad de la presentación y la comunicación del instructor? (H)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "8",
+                        "label": "¿Te sentiste motivado/a y participaste activamente durante las actividades del taller? (I)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "9",
+                        "label": "¿Hubo alguna parte del taller que te resultó confusa o difícil de entender? (Opcional) (J)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "10",
+                        "label": "¿Consideras que el ritmo del taller fue adecuado para asimilar los conocimientos y participar en las actividades propuestas?\n\n Evalúa si el ritmo del taller fue adecuado para asimilar los conocimientos y participar en las actividades propuestas. (K)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "11",
+                        "label": "¿Qué tan útiles fueron los ejemplos y las demostraciones prácticas durante el taller?  (Opcional)\n\nComenta qué tan útiles fueron los ejemplos y las demostraciones prácticas para mejorar su relevancia. (L)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "12",
+                        "label": "¿Recomendarías este taller?\n\nIndica si recomendarías este taller a otros jóvenes interesados en la IA generativa y brinda tus razones para ayudarnos a mejorar la propuesta. (M)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "13",
+                        "label": "¿Antes de finalizar, algún comentario que nos ayude a mejorar?\n¡Cualquier comentario extra aporta valor! (N)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "14",
+                        "label": "(O)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "15",
+                        "label": "(P)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "16",
+                        "label": "(Q)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "17",
+                        "label": "(R)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "18",
+                        "label": "(S)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "19",
+                        "label": "(T)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "20",
+                        "label": "(U)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "21",
+                        "label": "(V)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "22",
+                        "label": "(W)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "23",
+                        "label": "(X)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "24",
+                        "label": "(Y)",
+                        "type": "text"
+                    },
+                    {
+                        "name": "25",
+                        "label": "(Z)",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "module": "google-sheets:addRow",
+            "version": 2,
+            "parameters": {
+                "__IMTCONN__": 2260148
+            },
+            "mapper": {
+                "mode": "select",
+                "insertUnformatted": false,
+                "valueInputOption": "USER_ENTERED",
+                "insertDataOption": "INSERT_ROWS",
+                "from": "drive",
+                "spreadsheetId": "/1Vtru9wChBaX5Fk-natRO8QDVOg1cCJ9Ve8QkmHJRgtA",
+                "sheetId": "Hoja 1",
+                "includesHeaders": true,
+                "values": {
+                    "0": "{{4.`1`}}",
+                    "1": "{{4.`2`}}",
+                    "2": "{{4.`3`}}",
+                    "3": "{{4.`4`}}",
+                    "4": "{{4.`5`}}",
+                    "5": "{{4.`6`}}",
+                    "6": "{{4.`7`}}",
+                    "7": "{{4.`8`}}",
+                    "8": "{{4.`9`}}",
+                    "9": "{{4.`10`}}",
+                    "10": "{{4.`11`}}",
+                    "11": "{{4.`12`}}",
+                    "12": "{{4.`13`}}"
+                }
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "My Google connection (toscanico3@gmail.com)",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google"
+                            }
+                        }
+                    },
+                    "expect": {
+                        "mode": {
+                            "label": "Select by path"
+                        },
+                        "insertUnformatted": {
+                            "mode": "chose"
+                        },
+                        "valueInputOption": {
+                            "mode": "chose",
+                            "label": "User entered"
+                        },
+                        "insertDataOption": {
+                            "mode": "chose",
+                            "label": "Insert rows"
+                        },
+                        "from": {
+                            "label": "My Drive"
+                        },
+                        "spreadsheetId": {
+                            "path": [
+                                "Respuestas cuestionario make"
+                            ]
+                        },
+                        "sheetId": {
+                            "label": "Hoja 1"
+                        },
+                        "includesHeaders": {
+                            "nested": [
+                                {
+                                    "name": "values",
+                                    "label": "Values",
+                                    "type": "collection",
+                                    "spec": [
+                                        {
+                                            "name": "0",
+                                            "label": "Nombre (opcional) (A)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "1",
+                                            "label": "Email (opcional) (B)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "2",
+                                            "label": "¿En qué medida el taller cumplió tus expectativas?\n\nEvalúa en qué medida el taller cumplió tus expectativas iniciales para mejorar en futuras ediciones. (C)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "3",
+                                            "label": "¿Qué fue lo que más te gustó del taller? (Opcional) (D)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "4",
+                                            "label": "¿Hubo algo en particular que no te gustó o te pareció aburrido?  (Opcional) (E)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "5",
+                                            "label": "¿Consideras que el contenido del taller fue comprensible para tu nivel de conocimiento? (F)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "6",
+                                            "label": "¿Cómo calificarías la claridad de la presentación y la comunicación del instructor? (G)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "7",
+                                            "label": "¿Te sentiste motivado/a y participaste activamente durante las actividades del taller? (H)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "8",
+                                            "label": "¿Hubo alguna parte del taller que te resultó confusa o difícil de entender? (Opcional) (I)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "9",
+                                            "label": "¿Consideras que el ritmo del taller fue adecuado para asimilar los conocimientos y participar en las actividades propuestas?\n\n Evalúa si el ritmo del taller fue adecuado para asimilar los conocimientos y participar en las actividades propuestas. (J)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "10",
+                                            "label": "¿Qué tan útiles fueron los ejemplos y las demostraciones prácticas durante el taller?  (Opcional)\n\nComenta qué tan útiles fueron los ejemplos y las demostraciones prácticas para mejorar su relevancia. (K)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "11",
+                                            "label": "¿Recomendarías este taller?\n\nIndica si recomendarías este taller a otros jóvenes interesados en la IA generativa y brinda tus razones para ayudarnos a mejorar la propuesta. (L)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "12",
+                                            "label": "¿Antes de finalizar, algún comentario que nos ayude a mejorar?\n¡Cualquier comentario extra aporta valor! (M)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "13",
+                                            "label": "(N)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "14",
+                                            "label": "(O)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "15",
+                                            "label": "(P)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "16",
+                                            "label": "(Q)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "17",
+                                            "label": "(R)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "18",
+                                            "label": "(S)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "19",
+                                            "label": "(T)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "20",
+                                            "label": "(U)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "21",
+                                            "label": "(V)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "22",
+                                            "label": "(W)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "23",
+                                            "label": "(X)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "24",
+                                            "label": "(Y)",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "25",
+                                            "label": "(Z)",
+                                            "type": "text"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "label": "Yes"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "mode",
+                        "type": "select",
+                        "label": "Choose a Method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "select",
+                                "fromAll",
+                                "map"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "insertUnformatted",
+                        "type": "boolean",
+                        "label": "Unformatted",
+                        "required": true
+                    },
+                    {
+                        "name": "valueInputOption",
+                        "type": "select",
+                        "label": "Value input option",
+                        "validate": {
+                            "enum": [
+                                "USER_ENTERED",
+                                "RAW"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "insertDataOption",
+                        "type": "select",
+                        "label": "Insert data option",
+                        "validate": {
+                            "enum": [
+                                "INSERT_ROWS",
+                                "OVERWRITE"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from",
+                        "type": "select",
+                        "label": "Choose a Drive",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "drive",
+                                "share",
+                                "team"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spreadsheetId",
+                        "type": "file",
+                        "label": "Spreadsheet ID",
+                        "required": true
+                    },
+                    {
+                        "name": "sheetId",
+                        "type": "select",
+                        "label": "Sheet Name",
+                        "required": true
+                    },
+                    {
+                        "name": "includesHeaders",
+                        "type": "select",
+                        "label": "Table contains headers",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        }
+                    },
+                    {
+                        "name": "values",
+                        "type": "collection",
+                        "label": "Values",
+                        "spec": [
+                            {
+                                "name": "0",
+                                "type": "text",
+                                "label": "Nombre (opcional) (A)"
+                            },
+                            {
+                                "name": "1",
+                                "type": "text",
+                                "label": "Email (opcional) (B)"
+                            },
+                            {
+                                "name": "2",
+                                "type": "text",
+                                "label": "¿En qué medida el taller cumplió tus expectativas?\n\nEvalúa en qué medida el taller cumplió tus expectativas iniciales para mejorar en futuras ediciones. (C)"
+                            },
+                            {
+                                "name": "3",
+                                "type": "text",
+                                "label": "¿Qué fue lo que más te gustó del taller? (Opcional) (D)"
+                            },
+                            {
+                                "name": "4",
+                                "type": "text",
+                                "label": "¿Hubo algo en particular que no te gustó o te pareció aburrido?  (Opcional) (E)"
+                            },
+                            {
+                                "name": "5",
+                                "type": "text",
+                                "label": "¿Consideras que el contenido del taller fue comprensible para tu nivel de conocimiento? (F)"
+                            },
+                            {
+                                "name": "6",
+                                "type": "text",
+                                "label": "¿Cómo calificarías la claridad de la presentación y la comunicación del instructor? (G)"
+                            },
+                            {
+                                "name": "7",
+                                "type": "text",
+                                "label": "¿Te sentiste motivado/a y participaste activamente durante las actividades del taller? (H)"
+                            },
+                            {
+                                "name": "8",
+                                "type": "text",
+                                "label": "¿Hubo alguna parte del taller que te resultó confusa o difícil de entender? (Opcional) (I)"
+                            },
+                            {
+                                "name": "9",
+                                "type": "text",
+                                "label": "¿Consideras que el ritmo del taller fue adecuado para asimilar los conocimientos y participar en las actividades propuestas?\n\n Evalúa si el ritmo del taller fue adecuado para asimilar los conocimientos y participar en las actividades propuestas. (J)"
+                            },
+                            {
+                                "name": "10",
+                                "type": "text",
+                                "label": "¿Qué tan útiles fueron los ejemplos y las demostraciones prácticas durante el taller?  (Opcional)\n\nComenta qué tan útiles fueron los ejemplos y las demostraciones prácticas para mejorar su relevancia. (K)"
+                            },
+                            {
+                                "name": "11",
+                                "type": "text",
+                                "label": "¿Recomendarías este taller?\n\nIndica si recomendarías este taller a otros jóvenes interesados en la IA generativa y brinda tus razones para ayudarnos a mejorar la propuesta. (L)"
+                            },
+                            {
+                                "name": "12",
+                                "type": "text",
+                                "label": "¿Antes de finalizar, algún comentario que nos ayude a mejorar?\n¡Cualquier comentario extra aporta valor! (M)"
+                            },
+                            {
+                                "name": "13",
+                                "type": "text",
+                                "label": "(N)"
+                            },
+                            {
+                                "name": "14",
+                                "type": "text",
+                                "label": "(O)"
+                            },
+                            {
+                                "name": "15",
+                                "type": "text",
+                                "label": "(P)"
+                            },
+                            {
+                                "name": "16",
+                                "type": "text",
+                                "label": "(Q)"
+                            },
+                            {
+                                "name": "17",
+                                "type": "text",
+                                "label": "(R)"
+                            },
+                            {
+                                "name": "18",
+                                "type": "text",
+                                "label": "(S)"
+                            },
+                            {
+                                "name": "19",
+                                "type": "text",
+                                "label": "(T)"
+                            },
+                            {
+                                "name": "20",
+                                "type": "text",
+                                "label": "(U)"
+                            },
+                            {
+                                "name": "21",
+                                "type": "text",
+                                "label": "(V)"
+                            },
+                            {
+                                "name": "22",
+                                "type": "text",
+                                "label": "(W)"
+                            },
+                            {
+                                "name": "23",
+                                "type": "text",
+                                "label": "(X)"
+                            },
+                            {
+                                "name": "24",
+                                "type": "text",
+                                "label": "(Y)"
+                            },
+                            {
+                                "name": "25",
+                                "type": "text",
+                                "label": "(Z)"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us1.make.com"
+    }
+}
